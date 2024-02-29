@@ -2,112 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #output {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #bal {
+            background-color: lightgreen;
+        }
+    </style>
 </head>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    height: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-}
-
-.actions {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
-}
-
-button:hover {
-    background-color: #ddd;
-}
-
-#output {
-    text-align: center;
-}
-#bal{
-  background-color: lightgreen;
-  margin: 30%;
-}
-
-</style>
 <body>
     <div class="container">
-        <h1>RESERVE BANK OF ADITYA</h1>
-        <div class="actions">
+        <header>
+            <h1>RESERVE BANK OF ADITYA</h1>
+        </header>
+        <div>
             <button onclick="deposit()">Deposit</button>
             <button onclick="withdraw()">Withdraw</button>
             <button onclick="transfer()">Transfer</button>
-        </div>
             <button id="bal" onclick="checkBalance()">Check Balance</button>
-       
+        </div>
         <div id="output"></div>
     </div>
     <script>
-    let balance = 100;
+        let balance = 100;
 
-function deposit() {
-    let depositAmount = prompt("How much would you like to deposit?");
-    if (depositAmount !== null && !isNaN(depositAmount) && depositAmount !== "") {
-        depositAmount = parseInt(depositAmount);
-        balance += depositAmount;
-        document.getElementById("output").innerHTML = `Deposited $${depositAmount}. Current balance: $${balance}`;
-    }
-}
-
-function withdraw() {
-    let withdrawAmount = prompt("How much would you like to withdraw?");
-    if (withdrawAmount !== null && !isNaN(withdrawAmount) && withdrawAmount !== "") {
-        withdrawAmount = parseInt(withdrawAmount);
-        if (withdrawAmount > balance) {
-            document.getElementById("output").innerHTML = `Insufficient balance. Current balance: $${balance}`;
-        } else {
-            balance -= withdrawAmount;
-            document.getElementById("output").innerHTML = `Withdrawn $${withdrawAmount}. Current balance: $${balance}`;
+        function deposit() {
+            let depositAmount = prompt("How much would you like to deposit?");
+            if (depositAmount !== null && !isNaN(depositAmount) && depositAmount !== "") {
+                depositAmount = parseInt(depositAmount);
+                balance += depositAmount;
+                document.getElementById("output").innerHTML = `Deposited $${depositAmount}. Current balance: $${balance}`;
+            }
         }
-    }
-}
 
-function transfer() {
-    let transferAmount = prompt("How much would you like to transfer?");
-    if (transferAmount !== null && !isNaN(transferAmount) && withdrawAmount !== "") {
-        transferAmount = parseInt(transferAmount);
-        if (transferAmount > balance) {
-            document.getElementById("output").innerHTML = `Insufficient balance. Current balance: $${balance}`;
-        } else {
-            balance -= transferAmount;
-            document.getElementById("output").innerHTML = `Withdrawn $${transferAmount}. Current balance: $${balance}`;
+        function withdraw() {
+            let withdrawAmount = prompt("How much would you like to withdraw?");
+            if (withdrawAmount !== null && !isNaN(withdrawAmount) && withdrawAmount !== "") {
+                withdrawAmount = parseInt(withdrawAmount);
+                if (withdrawAmount > balance) {
+                    document.getElementById("output").innerHTML = `Insufficient balance. Current balance: $${balance}`;
+                } else {
+                    balance -= withdrawAmount;
+                    document.getElementById("output").innerHTML = `Withdrawn $${withdrawAmount}. Current balance: $${balance}`;
+                }
+            }
         }
-    }
-}
 
+        function transfer() {
+            let transferAmount = prompt("How much would you like to transfer?");
+            if (transferAmount !== null && !isNaN(transferAmount) && transferAmount !== "") {
+                transferAmount = parseInt(transferAmount);
+                if (transferAmount > balance) {
+                    document.getElementById("output").innerHTML = `Insufficient balance. Current balance: $${balance}`;
+                } else {
+                    balance -= transferAmount;
+                    document.getElementById("output").innerHTML = `Transferred $${transferAmount}. Current balance: $${balance}`;
+                }
+            }
+        }
 
-function checkBalance() {
-    document.getElementById("output").innerHTML = `Current balance: $${balance}`;
-}
-
-      
+        function checkBalance() {
+            document.getElementById("output").innerHTML = `Current balance: $${balance}`;
+        }
     </script>
 </body>
 </html>
