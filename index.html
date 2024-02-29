@@ -61,7 +61,6 @@ button:hover {
   color: black;
   margin: 30%;
 }
-
 </style>
 <body>
     <div class="container">
@@ -75,8 +74,13 @@ button:hover {
             <button id="bal" onclick="checkBalance()">Check Balance</button>
        
         <div id="output"></div>
-        <button href="upi://pay?pa=adityadangat018@oksbi&pn=Aditya Dangat&aid=uGICAgIDnhLybOQ">DONATE ME </button>
-    </div>
+        <button id="73"onclick="openWebsite()">DONATE ME </button>
+
+    <script>
+        function openWebsite() {
+            window.open('upi://pay?pa=adityadangat018@oksbi&pn=Aditya Dangat&aid=uGICAgIDnhLybOQ', '_blank');
+        }
+    </script>
     <script>
     let balance = 100;
 
